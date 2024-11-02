@@ -2,25 +2,163 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <fragment
-        android:id="@+id/fragRegistro"
-        android:name="com.example.imcapplication.RegistroFragment"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="3"
-        android:tag="fragContato"/>
-    <fragment
-        android:name="com.example.imcapplication.CalcularFragment"
-        android:id="@+id/fragLista"
-        android:tag="fragLista"
-        android:layout_width="match_parent"
-        android:layout_height="0sp"
-        android:layout_weight="7"/>
+        android:layout_marginBottom="30sp"
+        android:layout_marginTop="10sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:text="Informe a altura (em metros) e o peso (em Kg) da pessoa"
+        android:textAlignment="center"
+        android:textSize="25sp" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:minHeight="40sp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="60sp"
+            android:text="Altura: "
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edAltura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="metros"
+            android:inputType="text"
+            android:minWidth="320sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:minHeight="40sp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="60sp"
+            android:text="Peso: "
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edPeso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Kg"
+            android:inputType="text"
+            android:minWidth="320sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:paddingTop="10sp"
+        android:paddingBottom="10sp"
+        android:text="Selecione o sexo e toque em Calcular"
+        android:textAlignment="center"
+        android:textSize="20sp" />
+
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbMasculino"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10sp"
+            android:text="Masculino"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/rbFeminino"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10sp"
+            android:text="Feminino"
+            android:textSize="18sp" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="15sp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCalcular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10sp"
+            android:text="Calcular"
+            android:onClick="calcular"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnLimpar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:text="Limpar"
+            android:onClick="limpar"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnPesoIdeal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10sp"
+        android:visibility="invisible"
+        android:text="Peso Ideal"
+        android:onClick="pesoIdeal"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20sp">
+
+        <TextView
+            android:id="@+id/imc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10sp"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/situacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="20sp" />
+    </LinearLayout>
 </LinearLayout>
