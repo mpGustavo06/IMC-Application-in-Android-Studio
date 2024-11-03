@@ -1,6 +1,5 @@
 package com.example.imcapplication;
 
-import static android.widget.Toast.*;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -78,6 +77,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle bld)
+    {
+        super.onSaveInstanceState(bld);
+    }
+
     //MÉTODOS PARA ACTIVITY
     public void calcular(View view) {
         //Recebimento dos dados
@@ -94,22 +99,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //Verificando se os campos estão preenchidos
-        if (altura <= 0)
-        {
-            showToast(getString(R.string.altura_error));
-            return;
-        }
-        if (peso <= 0)
-        {
-            showToast(getString(R.string.peso_error));
-            return;
-        }
+        verificarCampos(altura, peso);
 
         //Cálculo do IMC
         imc = peso / Math.pow(altura,2);
 
-        //Verificando qual o gênero selecionado e mostrando o IMC e a situação
-        calcularImcPorGenero(imc);
+        //Verificando qual o gênero selecionado, mostra o IMC, mostra a situação
+        verificarImcPorGenero(imc);
+
+        //Calcula o peso ideal por gênero e altura
         calcularPesoIdeal(altura);
 
         btnPesoIdeal.setVisibility(View.VISIBLE);
@@ -155,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
         return;
     }
 
-    public void calcularImcPorGenero(double imc) {
+    public void verificarImcPorGenero(double imc) {
         if (radioButtonSelectedText.equals("Masculino")||radioButtonSelectedText.equals("Male"))
         {
             if (imc < 20.7)
@@ -226,6 +224,19 @@ public class MainActivity extends AppCompatActivity {
             pesoMax = imcFemMax * Math.pow(altura,2);
 
             pesoIdealText = getString(R.string.peso_ideal_text, pesoMin, pesoMax);
+        }
+    }
+
+    public void verificarCampos(double altura, double peso) {
+        if (altura <= 0)
+        {
+            showToast(getString(R.string.altura_error));
+            return;
+        }
+        if (peso <= 0)
+        {
+            showToast(getString(R.string.peso_error));
+            return;
         }
     }
 }

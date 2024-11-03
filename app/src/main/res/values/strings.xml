@@ -6,7 +6,7 @@
     <string name="hint_altura">metros</string>
     <string name="tv_peso">"Peso:"</string>
     <string name="hint_peso">quilogramas</string>
-    <string name="app_hint2">Selecione o sexo e clique em \'Calcular\'</string>
+    <string name="app_hint2">Selecione o gênero e clique em \'Calcular\'</string>
     <string name="rbMasc">Masculino</string>
     <string name="rbFem">Feminino</string>
     <string name="btnCalcular">Calcular</string>
