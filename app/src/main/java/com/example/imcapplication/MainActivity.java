@@ -1,11 +1,11 @@
 package com.example.imcapplication;
 
+import static android.widget.Toast.*;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    showToast("Por favor, selecione um gênero!");
+                    showToast(getString(R.string.gender_error));
                     return;
                 }
 
@@ -96,12 +96,12 @@ public class MainActivity extends AppCompatActivity {
         //Verificando se os campos estão preenchidos
         if (altura <= 0)
         {
-            showToast("Altura inválida!");
+            showToast(getString(R.string.altura_error));
             return;
         }
         if (peso <= 0)
         {
-            showToast("Peso inválido!");
+            showToast(getString(R.string.peso_error));
             return;
         }
 
@@ -122,13 +122,13 @@ public class MainActivity extends AppCompatActivity {
         edPeso.setText("");
         radioGroup.clearCheck();
         btnPesoIdeal.setVisibility(View.INVISIBLE);
-        showToast("Campos limpos!");
+        showToast(getString(R.string.campos_limpos));
         findViewById(R.id.edAltura).requestFocus();
     }
 
     public void pesoIdeal(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Peso Ideal");
+        builder.setTitle(R.string.dlog_title);
         builder.setMessage(pesoIdealText);
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -150,58 +150,59 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //MÉTODOS AUXILIARES
-    public void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    public void showToast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        return;
     }
 
     public void calcularImcPorGenero(double imc) {
-        if (radioButtonSelectedText.equals("Masculino"))
+        if (radioButtonSelectedText.equals("Masculino")||radioButtonSelectedText.equals("Male"))
         {
             if (imc < 20.7)
             {
-                situacaoText.setText("Abaixo do peso");
+                situacaoText.setText(R.string.imc_abaixo_peso);
             }
             else if (imc < 26.4)
             {
-                situacaoText.setText("Peso ideal");
+                situacaoText.setText(R.string.imc_peso_ideal);
             }
             else if (imc < 27.8)
             {
-                situacaoText.setText("Pouco acima do peso");
+                situacaoText.setText(R.string.imc_pouco_acima_peso);
             }
             else if (imc < 31.1)
             {
-                situacaoText.setText("Acima do peso");
+                situacaoText.setText(R.string.imc_acima_peso);
             }
             else
             {
-                situacaoText.setText("Obesidade");
+                situacaoText.setText(R.string.imc_obesidade);
             }
 
             imcText.setText(String.format("IMC: %.2f", imc));
         }
 
-        if (radioButtonSelectedText.equals("Feminino"))
+        if (radioButtonSelectedText.equals("Feminino")||radioButtonSelectedText.equals("Female"))
         {
             if (imc < 19.1)
             {
-                situacaoText.setText("Abaixo do peso");
+                situacaoText.setText(R.string.imc_abaixo_peso);
             }
             else if (imc < 25.8)
             {
-                situacaoText.setText("Peso ideal");
+                situacaoText.setText(R.string.imc_peso_ideal);
             }
             else if (imc < 27.3)
             {
-                situacaoText.setText("Pouco acima do peso");
+                situacaoText.setText(R.string.imc_pouco_acima_peso);
             }
             else if (imc < 32.3)
             {
-                situacaoText.setText("Acima do peso");
+                situacaoText.setText(R.string.imc_acima_peso);
             }
             else
             {
-                situacaoText.setText("Obesidade");
+                situacaoText.setText(R.string.imc_obesidade);
             }
 
             imcText.setText(String.format("IMC: %.2f", imc));
@@ -213,18 +214,18 @@ public class MainActivity extends AppCompatActivity {
         double imcFemMin = 19.1, imcFemMax = 25.8;
         double pesoMin, pesoMax;
 
-        if (radioButtonSelectedText.equals("Masculino")){
+        if (radioButtonSelectedText.equals("Masculino")||radioButtonSelectedText.equals("Male")){
             pesoMin = imcMascMin * Math.pow(altura,2);
             pesoMax = imcMascMax * Math.pow(altura,2);
 
-            pesoIdealText = String.format("O peso ideal está entre %.2f kg à %.2f Kg",pesoMin,pesoMax);
+            pesoIdealText = getString(R.string.peso_ideal_text, pesoMin, pesoMax);
         }
 
-        if (radioButtonSelectedText.equals("Feminino")){
+        if (radioButtonSelectedText.equals("Feminino")||radioButtonSelectedText.equals("Female")){
             pesoMin = imcFemMin * Math.pow(altura,2);
             pesoMax = imcFemMax * Math.pow(altura,2);
 
-            pesoIdealText = String.format("O peso ideal está entre %.2f Kg à %.2f Kg",pesoMin,pesoMax);
+            pesoIdealText = getString(R.string.peso_ideal_text, pesoMin, pesoMax);
         }
     }
 }

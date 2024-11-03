@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IMC Calculator</string>
+    <string name="app_hint">Enter the person\'s height (in meters) and weight (in kilograms)</string>
+    <string name="tv_altura">Height:</string>
+    <string name="hint_altura">meters</string>
+    <string name="tv_peso">"Weight:"</string>
+    <string name="hint_peso">kilograms</string>
+    <string name="app_hint2">Select the gender and click \'Calculate\'</string>
+    <string name="rbMasc">Male</string>
+    <string name="rbFem">Female</string>
+    <string name="btnCalcular">Calculate</string>
+    <string name="btnLimpar">Clear</string>
+    <string name="btnPesoIdeal">Ideal Weight</string>
+    <string name="gender_error">Please select a genre!</string>
+    <string name="altura_error">Invalid height!</string>
+    <string name="peso_error">Invalid weight!</string>
+    <string name="campos_limpos">Clean fields!</string>
+    <string name="dlog_title">Ideal Weight</string>
+    <string name="imc_abaixo_peso">Underweight</string>
+    <string name="imc_peso_ideal">Ideal Weight</string>
+    <string name="imc_pouco_acima_peso">Slightly Overweight</string>
+    <string name="imc_acima_peso">Overweight</string>
+    <string name="imc_obesidade">Obesity</string>
+    <string name="peso_ideal_text">Its ideal weight is between %.2f Kg and %.2f Kg</string>
+</resources>
