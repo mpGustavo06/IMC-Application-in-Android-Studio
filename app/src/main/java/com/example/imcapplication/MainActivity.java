@@ -96,10 +96,20 @@ public class MainActivity extends AppCompatActivity {
         catch (NumberFormatException e)
         {
             Log.e("MainActivity", "Erro ao converter para double: " + e.getMessage());
+            return;
         }
 
         //Verificando se os campos estão preenchidos
-        verificarCampos(altura, peso);
+        if (altura <= 0)
+        {
+            showToast(getString(R.string.altura_error));
+            return;
+        }
+        if (peso <= 0)
+        {
+            showToast(getString(R.string.peso_error));
+            return;
+        }
 
         //Cálculo do IMC
         imc = peso / Math.pow(altura,2);
@@ -224,19 +234,6 @@ public class MainActivity extends AppCompatActivity {
             pesoMax = imcFemMax * Math.pow(altura,2);
 
             pesoIdealText = getString(R.string.peso_ideal_text, pesoMin, pesoMax);
-        }
-    }
-
-    public void verificarCampos(double altura, double peso) {
-        if (altura <= 0)
-        {
-            showToast(getString(R.string.altura_error));
-            return;
-        }
-        if (peso <= 0)
-        {
-            showToast(getString(R.string.peso_error));
-            return;
         }
     }
 }
